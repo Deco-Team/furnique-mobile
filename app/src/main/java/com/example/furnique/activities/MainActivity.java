@@ -1,6 +1,5 @@
 package com.example.furnique.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -10,9 +9,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.furnique.R;
+import com.example.furnique.models.CategoryModel;
 
 public class MainActivity extends AppCompatActivity {
 
+    private CategoryModel categoryModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        categoryModel = new CategoryModel();
     }
 }
