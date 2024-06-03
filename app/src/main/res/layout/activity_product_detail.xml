@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semi_bold"
-                    android:text="Categories"
+                    android:text="Phân loại"
                     android:textSize="14sp" />
 
                 <TextView
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Product Name"
+                    android:text="Tên sản phẩm"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Price"
+                android:text="Giá"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -100,39 +100,39 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/txtVariant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Variants" />
+<!--            <TextView-->
+<!--                android:id="@+id/txtVariant"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:text="Variants" />-->
 
-            <ToggleButton
-                android:id="@+id/tgbtnVariant"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/border_toggle_button"
-                android:checked="false"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textColor="@color/primary"
-                android:textOff="VARIANT off"
-                android:textOn="VARIANT on"
-                app:backgroundTint="@null" />
+<!--            <ToggleButton-->
+<!--                android:id="@+id/tgbtnVariant"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:background="@drawable/border_toggle_button"-->
+<!--                android:checked="false"-->
+<!--                android:fontFamily="@font/poppins_semi_bold"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="8dp"-->
+<!--                android:textColor="@color/primary"-->
+<!--                android:textOff="VARIANT off"-->
+<!--                android:textOn="VARIANT on"-->
+<!--                app:backgroundTint="@null" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <View
-            android:id="@+id/divider5"
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
+<!--        <View-->
+<!--            android:id="@+id/divider5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="20dp" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Quantity" />
+                android:text="Số lượng" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -199,7 +199,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="50 available products" />
+                    android:text="50 mặt hàng có sẵn" />
 
             </LinearLayout>
 
@@ -216,7 +216,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/primary_button"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Add to cart"
+            android:text="Thên vào giỏ hàng"
             android:textColor="@color/primary"
             android:textSize="16sp"
             app:backgroundTint="@null"
@@ -235,7 +235,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Description" />
+            android:text="Mô tả" />
 
         <TextView
             android:id="@+id/txtDescriptionDetail"
@@ -244,7 +244,7 @@
             android:elevation="2dp"
             android:fontFamily="@font/poppins_regular"
             android:shadowColor="#CA0101"
-            android:text="Description Detail" />
+            android:text="Dòng mô tả ..." />
 
         <View
             android:id="@+id/divider8"
@@ -256,7 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Dimension" />
+            android:text="Thông số" />
 
         <TextView
             android:id="@+id/txtDimensionDetail"
@@ -265,7 +265,7 @@
             android:elevation="2dp"
             android:fontFamily="@font/poppins_regular"
             android:shadowColor="#CA0101"
-            android:text="Dimension Detail" />
+            android:text="Dòng thông số ..." />
 
 
     </LinearLayout>
