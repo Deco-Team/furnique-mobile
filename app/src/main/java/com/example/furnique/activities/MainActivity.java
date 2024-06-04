@@ -10,10 +10,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.furnique.R;
 import com.example.furnique.models.CategoryModel;
+import com.example.furnique.models.ProductModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private CategoryModel categoryModel;
+    private ProductModel productModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,5 +28,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         categoryModel = new CategoryModel();
+        productModel = new ProductModel();
     }
 }
