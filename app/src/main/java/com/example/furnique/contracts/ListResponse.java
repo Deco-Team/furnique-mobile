@@ -1,19 +1,17 @@
-package com.example.furnique.schemas;
-
-import com.example.furnique.contracts.Constants;
+package com.example.furnique.contracts;
 
 import java.util.List;
 
-public class CategoryList {
-    public CategoryList(List<Category> docs) {
+public class ListResponse<T> {
+    public ListResponse(List<T> docs) {
         this.docs = docs;
     }
 
-    public List<Category> getDocs() {
+    public List<T> getDocs() {
         return docs;
     }
 
-    List<Category> docs;
+    List<T> docs;
 //    Integer totalDocs;
 //    Integer offset;
 //    Integer limit;

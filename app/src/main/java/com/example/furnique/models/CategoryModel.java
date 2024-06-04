@@ -2,7 +2,7 @@ package com.example.furnique.models;
 
 
 import com.example.furnique.contracts.Constants;
-import com.example.furnique.dto.response.CategoryListResponseDTO;
+import com.example.furnique.dto.response.ListResponseDTO;
 import com.example.furnique.models.interfaces.CategoryAPI;
 import com.example.furnique.schemas.Category;
 
@@ -36,15 +36,15 @@ public class CategoryModel {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CategoryAPI categoryAPI = retrofit.create(CategoryAPI.class);
-        categoryAPI.getCategories().enqueue(new Callback<CategoryListResponseDTO>() {
+        categoryAPI.getCategories().enqueue(new Callback<ListResponseDTO<Category>>() {
             @Override
-            public void onResponse(Call<CategoryListResponseDTO> call, Response<CategoryListResponseDTO> response) {
+            public void onResponse(Call<ListResponseDTO<Category>> call, Response<ListResponseDTO<Category>> response) {
                 setList(response.body().getData().getDocs());
                 System.out.println("Success: Fetching categories " + getList().size());
             }
 
             @Override
-            public void onFailure(Call<CategoryListResponseDTO> call, Throwable t) {
+            public void onFailure(Call<ListResponseDTO<Category>> call, Throwable t) {
                 System.out.println("Error when fetching categories");
                 System.out.println(t);
             }
