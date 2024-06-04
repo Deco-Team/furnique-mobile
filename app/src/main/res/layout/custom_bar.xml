@@ -6,7 +6,7 @@
     android:layout_height="130dp"
     android:layout_margin="20dp"
     android:background="#F2F2F2"
-    app:layout_constraintCircleRadius="500dp">
+    >
 
     <Button
         android:id="@+id/btnBack"
