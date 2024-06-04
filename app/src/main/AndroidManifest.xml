@@ -35,9 +35,6 @@
             android:name=".activities.Login"
             android:exported="false" />
         <activity
-            android:name=".activities.Home"
-            android:exported="false" />
-        <activity
             android:name=".activities.MainActivity"
             android:exported="false">
 <!--            <intent-filter>-->

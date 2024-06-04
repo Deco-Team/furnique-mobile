@@ -69,7 +69,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="279dp"
+                android:layout_width="252dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:layout_weight="1"
@@ -81,17 +81,17 @@
 
             <TextView
                 android:id="@+id/txtMoreProduct"
-                android:layout_width="wrap_content"
+                android:layout_width="113dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_arrow_right"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
+                android:iconTint="@color/primary"
                 android:text="Xem thêm"
-                android:textColor="@color/primary"
-                android:drawableEnd="@drawable/ic_arrow_right"
-
-                android:iconTint="@color/primary" />
+                android:textColor="@color/primary" />
         </LinearLayout>
 
         <RelativeLayout
