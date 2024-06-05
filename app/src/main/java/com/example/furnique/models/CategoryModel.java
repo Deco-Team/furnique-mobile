@@ -1,6 +1,7 @@
 package com.example.furnique.models;
 
 
+import com.example.furnique.adapters.ProductCarouselAdapter;
 import com.example.furnique.contracts.Constants;
 import com.example.furnique.dto.response.ListResponseDTO;
 import com.example.furnique.models.interfaces.CategoryAPI;
@@ -8,6 +9,7 @@ import com.example.furnique.schemas.Category;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,9 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CategoryModel {
     private List<Category> list;
-    public CategoryModel() {
-        list = new ArrayList<Category>();
-        // fetch categories
+    private ProductCarouselAdapter adapter;
+    public CategoryModel(ProductCarouselAdapter productCarouselAdapter) {
+        adapter = productCarouselAdapter;
+        list = new ArrayList();
         fetchCategories();
     }
 
@@ -41,6 +44,9 @@ public class CategoryModel {
             public void onResponse(Call<ListResponseDTO<Category>> call, Response<ListResponseDTO<Category>> response) {
                 setList(response.body().getData().getDocs());
                 System.out.println("Success: Fetching categories " + getList().size());
+
+                List<String> categoryImages = list.stream().map(item -> item.getImage()).collect(Collectors.toList());
+                adapter.addProducts(categoryImages);
             }
 
             @Override

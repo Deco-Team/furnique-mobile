@@ -12,16 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.furnique.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ProductCarouselAdapter extends RecyclerView.Adapter<ProductCarouselAdapter.ViewHolder>{
     Context context;
-    ArrayList<String> productList;
+    List<String> productList;
     onItemClickListener onItemClickListener;
 
-    public ProductCarouselAdapter(Context context, ArrayList<String> productList) {
+    public ProductCarouselAdapter(Context context, List<String> productList) {
         this.context = context;
         this.productList = productList;
+    }
+
+    public void addProducts(List<String> products)
+    {
+        products.forEach(product -> productList.add(product));
+        notifyDataSetChanged();
     }
 
     @NonNull
