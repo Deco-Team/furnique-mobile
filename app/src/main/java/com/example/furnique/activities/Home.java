@@ -1,5 +1,6 @@
 package com.example.furnique.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -27,34 +28,37 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        categoryRecycler = findViewById(R.id.categoryRecycler);
-        productRecycler = findViewById(R.id.productRecycler);
+//        categoryRecycler = findViewById(R.id.categoryRecycler);
+//        productRecycler = findViewById(R.id.productRecycler);
+//
+//        categoryList = new ArrayList<>();
+//        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/20062264-69ec-4472-aed6-80d6c63a41f1.jpg");
+//        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/d9e266a3-95af-420b-972c-9028f056aa89.jpg");
+//        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/44dd00a4-8ac2-4d10-a4d7-0bf95b44e319.jpg");
+//        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
+//
+//        productList = new ArrayList<>();
+//        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
+//        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
+//        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
+//
+//        productCarouselAdapter = new ProductCarouselAdapter(this, categoryList);
+//        categoryRecycler.setAdapter(productCarouselAdapter);
+//
+//        productCardAdapter = new ProductCardAdapter(this, productList);
+//        productRecycler.setAdapter(productCardAdapter);
+//        productRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+//
+//
+//        productCarouselAdapter.setOnItemClickListener(new ProductCarouselAdapter.onItemClickListener() {
+//            @Override
+//            public void onClick(ImageView imageView, String path) {
+//
+//            }
+//        });
 
-        categoryList = new ArrayList<>();
-        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/20062264-69ec-4472-aed6-80d6c63a41f1.jpg");
-        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/d9e266a3-95af-420b-972c-9028f056aa89.jpg");
-        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/44dd00a4-8ac2-4d10-a4d7-0bf95b44e319.jpg");
-        categoryList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-
-        productList = new ArrayList<>();
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-
-        productCarouselAdapter = new ProductCarouselAdapter(this, categoryList);
-        categoryRecycler.setAdapter(productCarouselAdapter);
-
-        productCardAdapter = new ProductCardAdapter(this, productList);
-        productRecycler.setAdapter(productCardAdapter);
-        productRecycler.setLayoutManager(new GridLayoutManager(this, 2));
-
-
-        productCarouselAdapter.setOnItemClickListener(new ProductCarouselAdapter.onItemClickListener() {
-            @Override
-            public void onClick(ImageView imageView, String path) {
-
-            }
-        });
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
 
     }
 }
