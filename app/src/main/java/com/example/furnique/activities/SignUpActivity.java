@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.furnique.R;
 import com.example.furnique.databinding.ActivitySignUpBinding;
 import com.example.furnique.dto.request.SignUpDTO;
+import com.example.furnique.fragments.HomeFragment;
 import com.example.furnique.models.SignUpModel;
 
 import java.util.Objects;
@@ -54,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
                 binding.passwordInputSignup.setError("Please enter your password");
             } else {
                 SignUpModel signUpModel = new SignUpModel(signUpDTO);
-                Intent intent = new Intent(this, Home.class);
+                Intent intent = new Intent(this, HomeFragment.class);
                 startActivity(intent);
             }
 
