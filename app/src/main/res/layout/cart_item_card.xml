@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imgProductItemCart"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="15dp"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtProductNameCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Tên sản phẩm trong cart"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txtSkuCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Sku: FUR123456"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnDeleteItem"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/back_button"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_close"
+                app:iconSize="12dp"
+                app:iconTint="#000" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnDesCart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/back_button"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="0dp"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <EditText
+                    android:id="@+id/edtQuantityCart"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_input"
+                    android:ems="6"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="1"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnIncCart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/back_button"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="0dp"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtProductPriceCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Giá sp cart"
+                android:textAlignment="textEnd"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
