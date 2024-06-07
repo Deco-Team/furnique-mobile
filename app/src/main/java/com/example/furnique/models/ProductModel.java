@@ -1,5 +1,6 @@
 package com.example.furnique.models;
 
+import com.example.furnique.adapters.ProductCardAdapter;
 import com.example.furnique.contracts.Constants;
 import com.example.furnique.dto.response.ListResponseDTO;
 import com.example.furnique.models.interfaces.ProductAPI;
@@ -16,9 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductModel {
     private List<Product> list;
-    public ProductModel() {
-        list = new ArrayList<Product>();
-        // fetch products
+    private ProductCardAdapter adapter;
+    public ProductModel(ProductCardAdapter productCardAdapter) {
+        adapter = productCardAdapter;
+        list = new ArrayList();
         fetchProducts();
     }
 
@@ -40,6 +42,8 @@ public class ProductModel {
             public void onResponse(Call<ListResponseDTO<Product>> call, Response<ListResponseDTO<Product>> response) {
                 setList(response.body().getData().getDocs());
                 System.out.println("Success: Fetching products " + getList().size());
+
+                adapter.addProducts(list);
             }
 
             @Override

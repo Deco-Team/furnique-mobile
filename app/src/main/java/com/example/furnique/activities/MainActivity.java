@@ -1,13 +1,9 @@
 package com.example.furnique.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,8 +14,6 @@ import com.example.furnique.fragments.CartFragment;
 import com.example.furnique.fragments.ContactFragment;
 import com.example.furnique.fragments.HomeFragment;
 import com.example.furnique.fragments.ProductFragment;
-import com.example.furnique.models.CategoryModel;
-import com.example.furnique.models.ProductModel;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -27,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
 
