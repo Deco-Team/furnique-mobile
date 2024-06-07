@@ -27,7 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:fontFamily="@font/poppins_bold"
         android:text="Log In"
         android:textColor="#000000"
         android:textSize="24sp"
