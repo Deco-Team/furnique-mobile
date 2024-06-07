@@ -16,4 +16,8 @@ public class Category {
         this.image = image;
         this.status = status;
     }
+
+    public String getImage() {
+        return image;
+    }
 }

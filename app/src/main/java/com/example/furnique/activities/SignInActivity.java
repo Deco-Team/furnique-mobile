@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.furnique.R;
 import com.example.furnique.databinding.ActivityLoginBinding;
 
-public class Login extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
 
@@ -20,13 +20,15 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.emailInput.requestFocus();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.emailInput.requestFocus();
     }
 }
