@@ -15,14 +15,18 @@ import android.widget.TextView;
 import com.example.furnique.R;
 import com.example.furnique.adapters.ProductCardAdapter;
 import com.example.furnique.adapters.ProductCarouselAdapter;
+import com.example.furnique.models.CategoryModel;
+import com.example.furnique.models.ProductModel;
+import com.example.furnique.schemas.Product;
 
 import java.util.ArrayList;
 
 
 public class ProductFragment extends Fragment {
     RecyclerView productRecycler;
-    ArrayList<String> productList;
+    ArrayList<Product> productList;
     ProductCardAdapter productCardAdapter;
+    ProductModel productModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,20 +37,13 @@ public class ProductFragment extends Fragment {
 
         productRecycler = view.findViewById(R.id.productRecycler);
         productList = new ArrayList<>();
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
-        productList.add("https://res.cloudinary.com/dpkfg05su/image/upload/4eafe71a-1194-40ab-be88-0eb4aa91f172.jpg");
 
         productCardAdapter = new ProductCardAdapter(getContext(), productList);
+        productRecycler.setAdapter(productCardAdapter);
+        productRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        productModel = new ProductModel(productCardAdapter);
+        System.out.println("Products: " + productModel.getList().size());
         productRecycler.setAdapter(productCardAdapter);
         productRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
