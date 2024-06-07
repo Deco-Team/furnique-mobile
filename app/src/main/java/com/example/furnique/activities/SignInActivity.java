@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.furnique.R;
 import com.example.furnique.databinding.ActivityLoginBinding;
 
-public class Login extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
 
