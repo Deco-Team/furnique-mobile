@@ -23,7 +23,7 @@
             android:name=".activities.ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Login"
+            android:name=".activities.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"
