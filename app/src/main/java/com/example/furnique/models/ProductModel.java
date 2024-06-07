@@ -34,8 +34,8 @@ public class ProductModel {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        ProductAPI productAPIAPI = retrofit.create(ProductAPI.class);
-        productAPIAPI.getProducts().enqueue(new Callback<ListResponseDTO<Product>>() {
+        ProductAPI productAPI = retrofit.create(ProductAPI.class);
+        productAPI.getProducts().enqueue(new Callback<ListResponseDTO<Product>>() {
             @Override
             public void onResponse(Call<ListResponseDTO<Product>> call, Response<ListResponseDTO<Product>> response) {
                 setList(response.body().getData().getDocs());
