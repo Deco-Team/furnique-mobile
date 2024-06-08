@@ -17,6 +17,10 @@ public class Category {
         this.status = status;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getImage() {
         return image;
     }

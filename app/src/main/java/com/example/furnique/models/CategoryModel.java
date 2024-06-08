@@ -45,8 +45,7 @@ public class CategoryModel {
                 setList(response.body().getData().getDocs());
                 System.out.println("Success: Fetching categories " + getList().size());
 
-                List<String> categoryImages = list.stream().map(item -> item.getImage()).collect(Collectors.toList());
-                adapter.addProducts(categoryImages);
+                adapter.addProducts(list);
             }
 
             @Override
