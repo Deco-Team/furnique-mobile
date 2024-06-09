@@ -15,6 +15,7 @@ import com.example.furnique.adapters.ProductCardAdapter;
 import com.example.furnique.adapters.ProductCarouselAdapter;
 import com.example.furnique.models.CategoryModel;
 import com.example.furnique.models.ProductModel;
+import com.example.furnique.schemas.Category;
 import com.example.furnique.schemas.Product;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class HomeFragment extends Fragment {
 
     RecyclerView categoryRecycler;
     RecyclerView productRecycler;
-    ArrayList<String> categoryList;
+    ArrayList<Category> categoryList;
     ArrayList<Product> productList;
     ProductCarouselAdapter productCarouselAdapter;
     ProductCardAdapter productCardAdapter;
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment {
 
         productCarouselAdapter.setOnItemClickListener(new ProductCarouselAdapter.onItemClickListener() {
             @Override
-            public void onClick(ImageView imageView, String path) {
+            public void onClick(ImageView imageView, Category category) {
                 // Handle item click here
             }
         });
