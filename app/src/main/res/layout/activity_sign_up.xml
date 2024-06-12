@@ -79,10 +79,24 @@
         android:background="@drawable/primary_button"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="Đăng ký"
         android:textColor="#E3964A"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:background="@drawable/secondary_button"
+        app:backgroundTint="@null"
+        android:text="Đăng nhập"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
 
 </LinearLayout>

@@ -20,13 +20,23 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/logo" />
 
+        <Button
+            android:id="@+id/imgLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Đăng nhập"
+            android:background="@drawable/secondary_button"
+            app:backgroundTint="@null"
+            android:visibility="visible"
+            android:layout_marginLeft="150dp" />
         <ImageView
             android:id="@+id/imgLogout"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="150dp"
             android:layout_weight="1"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_logout" />
     </LinearLayout>
 
