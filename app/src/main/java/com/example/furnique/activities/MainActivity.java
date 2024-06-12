@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d("MainActivity.onActivityResult", "requestCode: " + requestCode + ", resultCode: " + resultCode);
         if(resultCode == 2) {
-            binding.imgLogin.setVisibility(View.INVISIBLE);
+            binding.imgLogin.setVisibility(View.GONE);
             binding.imgLogout.setVisibility(View.VISIBLE);
         }
     }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 if((jsonObject.getLong("exp") - timestamp.getTime() / 1000) > 0) {
                     //valid token
-                    binding.imgLogin.setVisibility(View.INVISIBLE);
+                    binding.imgLogin.setVisibility(View.GONE);
                     binding.imgLogout.setVisibility(View.VISIBLE);
                 } else {
                     binding.imgLogin.setVisibility(View.VISIBLE);
