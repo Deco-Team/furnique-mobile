@@ -23,7 +23,6 @@ public class CategoryModel {
     public CategoryModel(ProductCarouselAdapter productCarouselAdapter) {
         adapter = productCarouselAdapter;
         list = new ArrayList();
-        fetchCategories();
     }
 
     public List<Category> getList() {
