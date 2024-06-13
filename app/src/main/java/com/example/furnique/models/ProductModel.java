@@ -21,7 +21,6 @@ public class ProductModel {
     public ProductModel(ProductCardAdapter productCardAdapter) {
         adapter = productCardAdapter;
         list = new ArrayList();
-        fetchProducts();
     }
 
     public List<Product> getList() {
@@ -32,18 +31,39 @@ public class ProductModel {
         this.list = list;
     }
 
+    public void fetchHomeProducts() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ProductAPI productAPI = retrofit.create(ProductAPI.class);
+        productAPI.getProducts(6).enqueue(new Callback<ListResponseDTO<Product>>() {
+            @Override
+            public void onResponse(Call<ListResponseDTO<Product>> call, Response<ListResponseDTO<Product>> response) {
+                setList(response.body().getData().getDocs());
+                System.out.println("Success: Fetching HOME products " + getList().size());
+
+                adapter.addProducts(list);
+            }
+
+            @Override
+            public void onFailure(Call<ListResponseDTO<Product>> call, Throwable t) {
+                System.out.println("Error when fetching products");
+                System.out.println(t);
+            }
+        });
+    }
+
     public void fetchProducts() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ProductAPI productAPI = retrofit.create(ProductAPI.class);
-        productAPI.getProducts().enqueue(new Callback<ListResponseDTO<Product>>() {
+        productAPI.getProducts(50).enqueue(new Callback<ListResponseDTO<Product>>() {
             @Override
             public void onResponse(Call<ListResponseDTO<Product>> call, Response<ListResponseDTO<Product>> response) {
-                setList(response.body().getData().getDocs());
-                System.out.println("Success: Fetching products " + getList().size());
-
-                adapter.addProducts(list);
+                // setList(response.body().getData().getDocs());
+                System.out.println("Success: Fetching products " + response.body().getData().getDocs().size());
+                // adapter.addProducts(list);
             }
 
             @Override

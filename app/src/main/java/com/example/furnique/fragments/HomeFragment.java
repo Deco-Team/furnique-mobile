@@ -50,6 +50,8 @@ public class HomeFragment extends Fragment {
 
         categoryModel = new CategoryModel(productCarouselAdapter);
         productModel = new ProductModel(productCardAdapter);
+        categoryModel.fetchCategories();
+        productModel.fetchHomeProducts();
         System.out.println("Categories: " + categoryModel.getList().size());
         System.out.println("Products: " + productModel.getList().size());
 
