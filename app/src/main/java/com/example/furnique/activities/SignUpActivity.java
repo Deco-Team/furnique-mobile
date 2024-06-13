@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.firstNameInput.requestFocus();
-        binding.customBar.txtTitle.setText("Sign Up");
+        binding.customBar.txtTitle.setText("Đăng ký");
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -58,7 +58,16 @@ public class SignUpActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, HomeFragment.class);
                 startActivity(intent);
             }
+        });
 
+        binding.loginButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        binding.customBar.btnBack.setOnClickListener(v -> {
+            finish();
         });
     }
 }
