@@ -86,6 +86,15 @@ public class Product {
         return variants.get(0).getPrice();
     }
 
+    public String getFirstVariantDimensionsString() {
+        ProductDimension dimensions = variants.get(0).dimensions;
+        return dimensions.width + " x " + dimensions.length + " x " + dimensions.height;
+    }
+
+    public int getFirstVariantQuantity() {
+        return variants.get(0).getQuantity();
+    }
+
     public String getCategoryString() {
         StringBuilder categoryBuilder = new StringBuilder();
         for (int i = 0; i < categories.size(); i++) {

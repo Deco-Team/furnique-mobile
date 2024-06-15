@@ -53,46 +53,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Phân loại"
+                android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txtCategories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:text="Phân loại"
-                    android:textSize="14sp" />
+                android:baselineAligned="false"
+                android:gravity="bottom"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtProductName"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Tên sản phẩm"
                     android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Giá"
+                    android:textAlignment="textEnd"
+                    android:textSize="16sp" />
+
             </LinearLayout>
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/txtPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Giá"
-                android:textSize="16sp" />
-
         </LinearLayout>
 
         <View
@@ -100,39 +101,39 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtVariant"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/poppins_regular"-->
-<!--                android:text="Variants" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/txtVariant"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:fontFamily="@font/poppins_regular"-->
+        <!--                android:text="Variants" />-->
 
-<!--            <ToggleButton-->
-<!--                android:id="@+id/tgbtnVariant"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:background="@drawable/border_toggle_button"-->
-<!--                android:checked="false"-->
-<!--                android:fontFamily="@font/poppins_semi_bold"-->
-<!--                android:gravity="center"-->
-<!--                android:padding="8dp"-->
-<!--                android:textColor="@color/primary"-->
-<!--                android:textOff="VARIANT off"-->
-<!--                android:textOn="VARIANT on"-->
-<!--                app:backgroundTint="@null" />-->
+        <!--            <ToggleButton-->
+        <!--                android:id="@+id/tgbtnVariant"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="40dp"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:background="@drawable/border_toggle_button"-->
+        <!--                android:checked="false"-->
+        <!--                android:fontFamily="@font/poppins_semi_bold"-->
+        <!--                android:gravity="center"-->
+        <!--                android:padding="8dp"-->
+        <!--                android:textColor="@color/primary"-->
+        <!--                android:textOff="VARIANT off"-->
+        <!--                android:textOn="VARIANT on"-->
+        <!--                app:backgroundTint="@null" />-->
 
-<!--        </LinearLayout>-->
+        <!--        </LinearLayout>-->
 
-<!--        <View-->
-<!--            android:id="@+id/divider5"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="20dp" />-->
+        <!--        <View-->
+        <!--            android:id="@+id/divider5"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="20dp" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -216,7 +217,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/primary_button"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Thên vào giỏ hàng"
+            android:text="Thêm vào giỏ hàng"
             android:textColor="@color/primary"
             android:textSize="16sp"
             app:backgroundTint="@null"
@@ -234,15 +235,14 @@
             android:id="@+id/txtDesciption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Mô tả" />
+            android:text="Mô tả"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtDescriptionDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="2dp"
-            android:fontFamily="@font/poppins_regular"
             android:shadowColor="#CA0101"
             android:text="Dòng mô tả ..." />
 
@@ -255,15 +255,15 @@
             android:id="@+id/txtDimension"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Thông số" />
+            android:text="Thông số"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtDimensionDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:elevation="2dp"
-            android:fontFamily="@font/poppins_regular"
             android:shadowColor="#CA0101"
             android:text="Dòng thông số ..." />
 
