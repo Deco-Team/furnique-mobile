@@ -50,4 +50,7 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ten">Tên</string>
+    <string name="ho">Họ</string>
+    <string name="donhangcuaban">Đơn hàng của bạn</string>
 </resources>

@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.SignUpActivity">
-
     <include
         android:id="@+id/custom_bar"
         layout="@layout/custom_bar"
@@ -15,7 +14,6 @@
         android:layout_height="100dp"
         android:layout_margin="20dp"
         />
-
     <EditText
         android:id="@+id/firstNameInput"
         android:layout_width="350dp"
@@ -25,9 +23,9 @@
         android:autofillHints=""
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="First name"
+        android:hint="Tên"
         android:inputType="text"
+        android:minHeight="48dp"
         android:padding="10dp" />
 
     <EditText
@@ -38,9 +36,9 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="Last name"
+        android:hint="Họ"
         android:inputType="text"
+        android:minHeight="48dp"
         android:padding="10dp" />
 
     <EditText
@@ -52,9 +50,9 @@
         android:autofillHints=""
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:fontFamily="@font/poppins_regular"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:padding="10dp" />
 
     <EditText
@@ -65,10 +63,18 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:inputType="textPassword"
-        android:fontFamily="@font/poppins_regular"
+
+        android:minHeight="48dp"
         android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/errSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FF0000" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -77,14 +83,12 @@
         android:layout_gravity="center"
         android:layout_marginVertical="8dp"
         android:background="@drawable/primary_button"
-        android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="Đăng ký"
         android:textColor="#E3964A"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="@null" />
-
     <Button
         android:id="@+id/loginButton"
         android:layout_width="350dp"
@@ -98,5 +102,4 @@
         android:textSize="16sp"
         android:textStyle="bold"
         />
-
 </LinearLayout>
