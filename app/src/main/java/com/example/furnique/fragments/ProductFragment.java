@@ -46,7 +46,7 @@ public class ProductFragment extends Fragment {
         System.out.println("Products: " + productModel.getList().size());
         productRecycler.setAdapter(productCardAdapter);
         productRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
-
+        productModel.fetchProducts();
         return view;
     }
 }
