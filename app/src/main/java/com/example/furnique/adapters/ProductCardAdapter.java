@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.furnique.R;
 import com.example.furnique.schemas.Product;
+import com.example.furnique.utils.CurrencyFormatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ProductCardAdapter extends RecyclerView.Adapter<ProductCardAdapter.
 
     Context context;
     ArrayList<Product> productList;
+    OnClickListener onClickListener;
 
     public ProductCardAdapter(Context context, ArrayList<Product> productList) {
         this.context = context;
@@ -36,12 +38,6 @@ public class ProductCardAdapter extends RecyclerView.Adapter<ProductCardAdapter.
         return new ViewHolder(view);
     }
 
-    public void addProducts(List<Product> products)
-    {
-        products.forEach(product -> productList.add(product));
-        notifyDataSetChanged();
-    }
-
     @Override
     public void onBindViewHolder(@NonNull ProductCardAdapter.ViewHolder holder, int position) {
         RequestOptions requestOptions = new RequestOptions()
@@ -52,7 +48,10 @@ public class ProductCardAdapter extends RecyclerView.Adapter<ProductCardAdapter.
         Product product = productList.get(position);
         holder.txtCategory.setText(product.getCategoryString());
         holder.txtTitle.setText(product.getName());
-        holder.txtPrice.setText(String.format("%,d", product.getFirstVariantPrice()) + " ₫");
+        holder.txtPrice.setText(CurrencyFormatUtil.formatAsVietnamDong(product.getFirstVariantPrice()));
+        holder.itemView.setOnClickListener(v -> {
+            this.onClickListener.onClick(v, product);
+        });
     }
 
     @Override
@@ -60,11 +59,26 @@ public class ProductCardAdapter extends RecyclerView.Adapter<ProductCardAdapter.
         return productList.size();
     }
 
+    public void addProducts(List<Product> products) {
+        products.forEach(product -> productList.add(product));
+        notifyDataSetChanged();
+    }
+
+    public void setOnClickListener(OnClickListener l) {
+        this.onClickListener = l;
+    }
+
+
+    public interface OnClickListener {
+        void onClick(View v, Product product);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtCategory;
         TextView txtTitle;
         TextView txtPrice;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.productCardImage);
