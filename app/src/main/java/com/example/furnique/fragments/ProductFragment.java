@@ -1,5 +1,6 @@
 package com.example.furnique.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,13 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.furnique.R;
+import com.example.furnique.activities.ProductDetailActivity;
 import com.example.furnique.adapters.ProductCardAdapter;
-import com.example.furnique.adapters.ProductCarouselAdapter;
-import com.example.furnique.models.CategoryModel;
 import com.example.furnique.models.ProductModel;
 import com.example.furnique.schemas.Product;
 
@@ -47,6 +46,13 @@ public class ProductFragment extends Fragment {
         productRecycler.setAdapter(productCardAdapter);
         productRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         productModel.fetchProducts();
+
+        productCardAdapter.setOnClickListener((v, product) -> {
+            Intent intent = new Intent(getContext(), ProductDetailActivity.class);
+            intent.putExtra("productId", product.get_id());
+            startActivity(intent);
+        });
+
         return view;
     }
 }

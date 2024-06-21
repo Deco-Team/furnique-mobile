@@ -1,5 +1,6 @@
 package com.example.furnique.models;
 
+import com.example.furnique.activities.ProductDetailActivity;
 import com.example.furnique.contracts.Constants;
 import com.example.furnique.dto.response.ProductDetailsResponseDTO;
 import com.example.furnique.models.interfaces.ProductAPI;
@@ -13,9 +14,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductDetailsModel {
     private Product details;
+    private ProductDetailActivity activity;
 
-    public ProductDetailsModel(String id) {
+    public ProductDetailsModel(String id, ProductDetailActivity activity) {
         this.details = null;
+        this.activity = activity;
         fetchDetails(id);
     }
 
@@ -37,6 +40,8 @@ public class ProductDetailsModel {
             public void onResponse(Call<ProductDetailsResponseDTO> call, Response<ProductDetailsResponseDTO> response) {
                 setDetails(response.body().getData());
                 System.out.println("Success: Fetching product " + id);
+
+                activity.setData(details);
             }
 
             @Override
