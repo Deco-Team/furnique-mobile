@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         binding.loginButton.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpActivity.this, Login.class);
+            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
             startActivity(intent);
             finish();
         });
@@ -72,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.errSignUp.setText("Người dùng đã tồn tại");
     }
     public void onSignUpSuccess() {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
 
