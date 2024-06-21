@@ -61,9 +61,9 @@ public class ProductModel {
         productAPI.getProducts(50).enqueue(new Callback<ListResponseDTO<Product>>() {
             @Override
             public void onResponse(Call<ListResponseDTO<Product>> call, Response<ListResponseDTO<Product>> response) {
-                // setList(response.body().getData().getDocs());
+                setList(response.body().getData().getDocs());
                 System.out.println("Success: Fetching products " + response.body().getData().getDocs().size());
-                // adapter.addProducts(list);
+                 adapter.addProducts(list);
             }
 
             @Override
