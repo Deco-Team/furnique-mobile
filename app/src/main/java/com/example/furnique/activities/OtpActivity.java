@@ -1,9 +1,13 @@
 package com.example.furnique.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,13 +23,19 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.furnique.R;
-import com.google.firebase.FirebaseException;
+import com.example.furnique.contracts.Constants;
+import com.example.furnique.dto.request.SignInDTO;
+import com.example.furnique.dto.request.VerifyDTO;
+import com.example.furnique.models.VerifyModel;
 
-import java.util.concurrent.TimeUnit;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 
 public class OtpActivity extends AppCompatActivity {
-    private EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
+    private EditText inputCode1, inputCode2, inputCode3, inputCode4;
     private TextView textMobile;
+    TextView txtVerifyError;
     private Button buttonVerify;
     private ProgressBar progressBar;
     private String verificationId;
@@ -55,8 +65,8 @@ public class OtpActivity extends AppCompatActivity {
         inputCode2 = findViewById(R.id.inputCode2);
         inputCode3 = findViewById(R.id.inputCode3);
         inputCode4 = findViewById(R.id.inputCode4);
-        inputCode5 = findViewById(R.id.inputCode5);
-        inputCode6 = findViewById(R.id.inputCode6);
+
+        txtVerifyError = findViewById(R.id.txtVerifyError);
 
         textMobile = findViewById(R.id.txtMobile);
         buttonVerify = findViewById(R.id.buttonVerify);
@@ -65,23 +75,23 @@ public class OtpActivity extends AppCompatActivity {
 
     private void setListener() {
         buttonVerify.setOnClickListener(v -> {
-            if (inputCode1.getText().toString().trim().isEmpty()
-                    || inputCode2.getText().toString().trim().isEmpty()
-                    || inputCode3.getText().toString().trim().isEmpty()
-                    || inputCode4.getText().toString().trim().isEmpty()
-                    || inputCode5.getText().toString().trim().isEmpty()
-                    || inputCode6.getText().toString().trim().isEmpty()) {
-                Toast.makeText(OtpActivity.this, "Vui lòng nhập đúng mã OTP", Toast.LENGTH_SHORT).show();
+            if (inputCode1.getText().toString().trim().isEmpty() || inputCode2.getText().toString().trim().isEmpty() || inputCode3.getText().toString().trim().isEmpty() || inputCode4.getText().toString().trim().isEmpty()) {
+                Toast.makeText(OtpActivity.this, "Vui lòng nhập mã OTP", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String code =
-                    inputCode1.getText().toString() +
-                            inputCode2.getText().toString() +
-                            inputCode3.getText().toString() +
-                            inputCode4.getText().toString() +
-                            inputCode5.getText().toString() +
-                            inputCode6.getText().toString();
-            Toast.makeText(OtpActivity.this, code, Toast.LENGTH_SHORT).show();
+            String code = inputCode1.getText().toString() + inputCode2.getText().toString() + inputCode3.getText().toString() + inputCode4.getText().toString();
+
+            VerifyDTO verifyDTO = new VerifyDTO();
+            SignInDTO signInDTO = new SignInDTO();
+
+            verifyDTO.setEmail(String.valueOf(
+                    getIntent().getStringExtra("email")));
+            verifyDTO.setOtp(code);
+            VerifyModel verifyModel = new VerifyModel(this, verifyDTO, signInDTO);
+            verifyModel.verify();
+
+            progressBar.setVisibility(View.VISIBLE);
+            buttonVerify.setVisibility(View.INVISIBLE);
 
 //            if (verificationId != null) {
 //                progressBar.setVisibility(View.VISIBLE);
@@ -132,9 +142,64 @@ public class OtpActivity extends AppCompatActivity {
 //                            })
 //                            .build();
 //            PhoneAuthProvider.verifyPhoneNumber(options);
-            Toast.makeText(OtpActivity.this, "Gửi lại mã OTP", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(OtpActivity.this, "Gửi lại mã OTP", Toast.LENGTH_SHORT).show();
+
+            findViewById(R.id.textResendOTP).setVisibility(View.GONE);
+            TextView txtTimer = findViewById(R.id.txtTimer);
+            txtTimer.setVisibility(View.VISIBLE);
+            new CountDownTimer(60000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                    // Used for formatting digit to be in 2 digits only
+                    NumberFormat f = new DecimalFormat("00");
+                    long min = (millisUntilFinished / 60000) % 60;
+                    long sec = (millisUntilFinished / 1000) % 60;
+                    txtTimer.setText(f.format(min) + ":" + f.format(sec));
+                }
+
+                // When the task is over it will print 00:00:00 there
+                public void onFinish() {
+                    txtTimer.setText("00:00");
+                    findViewById(R.id.textResendOTP).setVisibility(View.VISIBLE);
+                    txtTimer.setVisibility(View.GONE);
+                }
+            }.start();
+
+            String email = getIntent().getStringExtra("email");
+            String password = getIntent().getStringExtra("password");
+
+            VerifyDTO verifyDTO = new VerifyDTO();
+            SignInDTO signInDTO = new SignInDTO();
+
+            signInDTO.setEmail(email);
+            signInDTO.setPassword(password);
+
+            VerifyModel verifyModel = new VerifyModel(this, verifyDTO, signInDTO);
+            verifyModel.resend();
 
         });
+    }
+
+    public void onVerifySuccess(String accessToken) {
+        Log.d("OtpActivity.onVerifySuccess", "Verify success" + accessToken);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.FURNIQUE_PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("accessToken", accessToken);
+        editor.commit();
+
+        progressBar.setVisibility(View.GONE);
+        buttonVerify.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent();
+        setResult(2, intent);
+        finish();
+    }
+
+    public void onVerifyFailed() {
+        Log.e("OtpActivity.onVerifyFailed", "Verify failed");
+        txtVerifyError.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        buttonVerify.setVisibility(View.VISIBLE);
+        txtVerifyError.setText("Mã OTP không đúng");
     }
 
     private void setVerificationId() {
@@ -147,9 +212,8 @@ public class OtpActivity extends AppCompatActivity {
      */
     private void setTextMobile() {
         textMobile.setText(String.valueOf(
-//                getIntent().getStringExtra("mobile")
-                "email@gmail.com"
-        ));
+                getIntent().getStringExtra("email"))
+        );
     }
 
     /**
@@ -224,7 +288,7 @@ public class OtpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().trim().isEmpty()) {
-                    inputCode5.requestFocus();
+                    inputCode4.requestFocus();
                 } else {
                     inputCode3.requestFocus();
                 }
@@ -235,46 +299,6 @@ public class OtpActivity extends AppCompatActivity {
 
             }
         });
-        inputCode5.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().trim().isEmpty()) {
-                    inputCode6.requestFocus();
-                } else {
-                    inputCode4.requestFocus();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        inputCode6.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().trim().isEmpty()) {
-                    inputCode6.requestFocus();
-                } else {
-                    inputCode5.requestFocus();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
     }
 }

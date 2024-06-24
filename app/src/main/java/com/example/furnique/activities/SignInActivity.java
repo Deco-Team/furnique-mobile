@@ -1,13 +1,12 @@
 package com.example.furnique.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,6 +21,19 @@ import com.example.furnique.models.SignInModel;
 public class SignInActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2) {
+            if (resultCode == 2) {
+                // Handle the result from VerifyActivity
+                Intent resultIntent = new Intent();
+                setResult(resultCode, resultIntent);
+                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +55,9 @@ public class SignInActivity extends AppCompatActivity {
             SignInDTO signInDTO = new SignInDTO();
             signInDTO.setEmail(binding.emailInput.getText().toString());
             signInDTO.setPassword(binding.passwordInput.getText().toString());
-            if (signInDTO.getEmail().isEmpty()){
+            if (signInDTO.getEmail().isEmpty()) {
                 binding.emailInput.setError("Vui lòng nhập email");
-            } else if (signInDTO.getPassword().isEmpty()){
+            } else if (signInDTO.getPassword().isEmpty()) {
                 binding.passwordInput.setError("Vui lòng nhập mật khẩu");
             } else {
                 SignInModel signInModel = new SignInModel(this, signInDTO);
@@ -64,17 +76,21 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    public void onLoginSuccess(String accessToken) {
-        Log.d("SignInActivity.onLoginSuccess", "Login success");
-        SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.FURNIQUE_PREF, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("accessToken", accessToken);
-        editor.commit();
+    public void onLoginSuccess() {
+        Log.d("SignInActivity.onLoginSuccess", "Request success");
+//        SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.FURNIQUE_PREF, Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = pref.edit();
+//        editor.putString("accessToken", accessToken);
+//        editor.commit();
 
-        Intent intent = new Intent();
-        setResult(2, intent);
-        finish();
+        Intent intent = new Intent(SignInActivity.this, OtpActivity.class);
+        intent.putExtra("email", binding.emailInput.getText().toString());
+        intent.putExtra("password", binding.passwordInput.getText().toString());
+        startActivityForResult(intent, 2);
+//        setResult(2, intent);
+//        finish();
     }
+
 
     public void onLoginFailed() {
         Log.e("SignInActivity.onLoginSuccess", "Login failed");
