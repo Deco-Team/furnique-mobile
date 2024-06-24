@@ -26,6 +26,9 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
+            android:name=".activities.OtpActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ProductCarousel"
             android:exported="false" />
         <activity
