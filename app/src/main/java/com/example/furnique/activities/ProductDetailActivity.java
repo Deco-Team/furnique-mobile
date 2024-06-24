@@ -1,12 +1,16 @@
 package com.example.furnique.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.furnique.R;
+import com.example.furnique.contracts.Constants;
+import com.example.furnique.dto.request.CartRequestDTO;
+import com.example.furnique.models.CartModel;
 import com.example.furnique.models.ProductDetailsModel;
 import com.example.furnique.schemas.Product;
 import com.example.furnique.utils.CurrencyFormatUtil;
@@ -33,6 +40,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private EditText edtQuantity;
     private Button btnDes;
     private Button btnInc;
+    private Button btnAddToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +90,21 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+        btnAddToCart.setOnClickListener(view -> {
+            Log.d("ProductDetailActivity", product.getName() + " :: btnAddToCart");
+            SharedPreferences pref = this.getApplicationContext().getSharedPreferences(Constants.FURNIQUE_PREF, Context.MODE_PRIVATE);
+            String accessToken = pref.getString("accessToken", null);
+            if(accessToken == null) {
+                Toast.makeText(this, "Vui lòng đăng nhập để thêm vào giỏ hàng", Toast.LENGTH_LONG).show();
+            } else {
+                int quantity = Integer.parseInt(edtQuantity.getText().toString());
+                CartModel cartModel = new CartModel();
+                CartRequestDTO.AddToCartDto addToCartDto = new CartRequestDTO.AddToCartDto(productId, product.getFirstVariantSku(), quantity);
+                cartModel.addProductToCart(accessToken, addToCartDto);
+                Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
+            }
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -112,5 +135,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         edtQuantity = findViewById(R.id.edtQuantity);
         btnDes = findViewById(R.id.btnDes);
         btnInc = findViewById(R.id.btnInc);
+        btnAddToCart = findViewById(R.id.btnAddToCart);
     }
 }

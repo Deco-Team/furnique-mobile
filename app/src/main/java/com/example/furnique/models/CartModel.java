@@ -17,6 +17,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CartModel {
+    private OnCartResponseListener onCartResponseListener;
+
     public CartModel() {
     }
 
@@ -31,7 +33,7 @@ public class CartModel {
             public void onResponse(Call<DataResponseDTO<SuccessDTO>> call, Response<DataResponseDTO<SuccessDTO>> response) {
                 Log.d("addProductToCart.onResponse: ", String.valueOf(response.code()));
                 Log.d("addProductToCart.onResponse: ", new Gson().toJson(response.body()));
-                if(response.code() == 200) {
+                if(response.code() == 201) {
                     Log.d("addProductToCart.onResponse: ", "Success");
                 } else {
                     Log.d("addProductToCart.onResponse: ", "Failed");
@@ -54,6 +56,8 @@ public class CartModel {
             public void onResponse(Call<CartResponseDTO> call, Response<CartResponseDTO> response) {
                 Log.d("getCart.onResponse: ", String.valueOf(response.code()));
                 Log.d("getCart.onResponse: ", new Gson().toJson(response.body()));
+                CartResponseDTO cartResponseDTO = new CartResponseDTO(response.body().getData());
+                onCartResponseListener.onGetCartSuccess(cartResponseDTO.getData());
             }
 
             @Override
@@ -77,6 +81,7 @@ public class CartModel {
                 Log.d("updateProductQuantityInCart.onResponse: ", new Gson().toJson(response.body()));
                 if(response.code() == 200) {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Success");
+                    onCartResponseListener.reUpdateView(accessToken);
                 } else {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Failed");
                 }
@@ -101,6 +106,7 @@ public class CartModel {
                 Log.d("removeItemInCart.onResponse: ", new Gson().toJson(response.body()));
                 if(response.code() == 200) {
                     Log.d("removeItemInCart.onResponse: ", "Success");
+                    onCartResponseListener.reUpdateView(accessToken);
                 } else {
                     Log.d("removeItemInCart.onResponse: ", "Failed");
                 }
@@ -111,5 +117,13 @@ public class CartModel {
             }
         });
     }
+    public void setOnCartResponseListener(OnCartResponseListener listener) {
+        this.onCartResponseListener = listener;
+    }
 
+
+    public interface OnCartResponseListener {
+        void onGetCartSuccess(CartResponseDTO.CartDTO cartDTO);
+        void reUpdateView(String accessToken);
+    }
 }
