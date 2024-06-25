@@ -41,6 +41,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private Button btnDes;
     private Button btnInc;
     private Button btnAddToCart;
+    private CartModel cartModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         String productId = getIntent().getStringExtra("productId");
 
         new ProductDetailsModel(productId, this);
+        this.cartModel = new CartModel();
 
         btnBack.setOnClickListener(view -> {
             Intent intent = new Intent(ProductDetailActivity.this, MainActivity.class);
@@ -98,10 +100,20 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng đăng nhập để thêm vào giỏ hàng", Toast.LENGTH_LONG).show();
             } else {
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
-                CartModel cartModel = new CartModel();
                 CartRequestDTO.AddToCartDto addToCartDto = new CartRequestDTO.AddToCartDto(productId, product.getFirstVariantSku(), quantity);
-                cartModel.addProductToCart(accessToken, addToCartDto);
-                Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
+                this.cartModel.addProductToCart(accessToken, addToCartDto);
+            }
+        });
+
+        this.cartModel.setOnAddCartResponseListener(new CartModel.OnAddCartResponseListener() {
+            @Override
+            public void onAddCartResponseSuccess() {
+                Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAddCartResponseFail() {
+                Toast.makeText(getApplicationContext(), "Số lượng sản phẩm còn lại không đủ", Toast.LENGTH_LONG).show();
             }
         });
 

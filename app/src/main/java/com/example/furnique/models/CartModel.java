@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CartModel {
     private OnCartResponseListener onCartResponseListener;
+    private OnAddCartResponseListener onAddCartResponseListener;
 
     public CartModel() {
     }
@@ -35,8 +36,10 @@ public class CartModel {
                 Log.d("addProductToCart.onResponse: ", new Gson().toJson(response.body()));
                 if(response.code() == 201) {
                     Log.d("addProductToCart.onResponse: ", "Success");
+                    onAddCartResponseListener.onAddCartResponseSuccess();
                 } else {
                     Log.d("addProductToCart.onResponse: ", "Failed");
+                    onAddCartResponseListener.onAddCartResponseFail();
                 }
             }
             @Override
@@ -81,9 +84,11 @@ public class CartModel {
                 Log.d("updateProductQuantityInCart.onResponse: ", new Gson().toJson(response.body()));
                 if(response.code() == 200) {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Success");
+                    onAddCartResponseListener.onAddCartResponseSuccess();
                     onCartResponseListener.reUpdateView(accessToken);
                 } else {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Failed");
+                    onAddCartResponseListener.onAddCartResponseFail();
                 }
             }
             @Override
@@ -125,5 +130,15 @@ public class CartModel {
     public interface OnCartResponseListener {
         void onGetCartSuccess(CartResponseDTO.CartDTO cartDTO);
         void reUpdateView(String accessToken);
+    }
+
+    public void setOnAddCartResponseListener(OnAddCartResponseListener listener) {
+        this.onAddCartResponseListener = listener;
+    }
+
+
+    public interface OnAddCartResponseListener {
+        void onAddCartResponseSuccess();
+        void onAddCartResponseFail();
     }
 }

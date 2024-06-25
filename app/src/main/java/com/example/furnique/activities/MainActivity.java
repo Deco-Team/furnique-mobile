@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
             binding.imgLogin.setVisibility(View.VISIBLE);
             binding.imgLogout.setVisibility(View.GONE);
-            replaceFragment(new HomeFragment());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         });
     }
     @Override
@@ -83,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == 2) {
             binding.imgLogin.setVisibility(View.GONE);
             binding.imgLogout.setVisibility(View.VISIBLE);
-            replaceFragment(new HomeFragment());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 
