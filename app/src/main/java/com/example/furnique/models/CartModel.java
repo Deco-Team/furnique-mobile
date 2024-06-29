@@ -84,11 +84,9 @@ public class CartModel {
                 Log.d("updateProductQuantityInCart.onResponse: ", new Gson().toJson(response.body()));
                 if(response.code() == 200) {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Success");
-                    onAddCartResponseListener.onAddCartResponseSuccess();
                     onCartResponseListener.reUpdateView(accessToken);
                 } else {
                     Log.d("updateProductQuantityInCart.onResponse: ", "Failed");
-                    onAddCartResponseListener.onAddCartResponseFail();
                 }
             }
             @Override

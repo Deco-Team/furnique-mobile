@@ -37,9 +37,9 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        View customBar = view.findViewById(R.id.custom_bar);
-        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
-        txtTitle.setText("Giỏ hàng");
+//        View customBar = view.findViewById(R.id.custom_bar);
+//        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
+//        txtTitle.setText("Giỏ hàng");
 
         cartRecycler = view.findViewById(R.id.rvCartItems);
         layout_empty_cart = view.findViewById(R.id.layout_empty_cart);

@@ -11,12 +11,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/custom_bar"
-            layout="@layout/custom_bar"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="20dp" />
+<!--        <include-->
+<!--            android:id="@+id/custom_bar"-->
+<!--            layout="@layout/custom_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="20dp" />-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     <LinearLayout
                         android:id="@+id/layout_empty_cart"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="200dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -106,7 +106,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Giá của sản phẩm"
+                            android:text="0₫"
                             android:textAlignment="textEnd"
                             android:textSize="14sp"
                             android:typeface="sans" />
@@ -155,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Giá tổng cộng"
+                            android:text="0₫"
                             android:textAlignment="textEnd"
                             android:textSize="14sp" />
                     </LinearLayout>
