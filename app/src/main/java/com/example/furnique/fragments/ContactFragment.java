@@ -37,9 +37,9 @@ public class ContactFragment extends Fragment implements
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
-        View customBar = view.findViewById(R.id.custom_bar);
-        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
-        txtTitle.setText("Liên hệ");
+//        View customBar = view.findViewById(R.id.custom_bar);
+//        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
+//        txtTitle.setText("Liên hệ");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);

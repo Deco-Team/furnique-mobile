@@ -30,9 +30,9 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-        View customBar = view.findViewById(R.id.custom_bar);
-        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
-        txtTitle.setText("Sản phẩm");
+//        View customBar = view.findViewById(R.id.custom_bar);
+//        TextView txtTitle = customBar.findViewById(R.id.txtTitle);
+//        txtTitle.setText("Sản phẩm");
 
         productRecycler = view.findViewById(R.id.productRecycler);
         productList = new ArrayList<>();

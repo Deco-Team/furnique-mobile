@@ -20,26 +20,6 @@ class ProductVariantKeyValue {
     String material;
 }
 
-class ProductVariant {
-    String sku;
-    int price;
-    int quantity;
-    ProductDimension dimensions;
-    ProductVariantKeyValue keyValue;
-
-    public String getSku() {
-        return sku;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-}
-
 public class Product {
     String _id;
     String name;
@@ -81,6 +61,9 @@ public class Product {
     public List<ProductVariant> getVariants() {
         return variants;
     }
+    public String getFirstVariantSku() {
+        return variants.get(0).getSku();
+    }
 
     public int getFirstVariantPrice() {
         return variants.get(0).getPrice();
@@ -104,5 +87,24 @@ public class Product {
             }
         }
         return categoryBuilder.toString();
+    }
+    public class ProductVariant {
+        String sku;
+        int price;
+        int quantity;
+        ProductDimension dimensions;
+        ProductVariantKeyValue keyValue;
+
+        public String getSku() {
+            return sku;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
     }
 }

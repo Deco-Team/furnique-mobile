@@ -1,7 +1,7 @@
 package com.example.furnique.dto.request;
 
 public class CartRequestDTO {
-    public class AddToCartDto {
+    public static class AddToCartDto {
         private String productId;
 
         private String sku;
@@ -15,7 +15,7 @@ public class CartRequestDTO {
         }
     }
 
-    public class UpdateCartDto {
+    public static class UpdateCartDto {
         private String productId;
 
         private String sku;
@@ -29,7 +29,7 @@ public class CartRequestDTO {
         }
     }
 
-    public class DeleteItemInCartDto {
+    public static class DeleteItemInCartDto {
         private String productId;
 
         private String sku;
