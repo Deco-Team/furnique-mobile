@@ -52,19 +52,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/btnDeleteItem"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/back_button"
-                android:gravity="center"
-                android:paddingHorizontal="10dp"
-                app:backgroundTint="@null"
-                app:icon="@drawable/ic_close"
-                app:iconSize="10dp"
-                app:iconTint="#000" />
-
         </LinearLayout>
 
         <Space
