@@ -8,14 +8,6 @@
     android:orientation="vertical"
     tools:context=".activities.CheckoutActivity">
 
-    <include
-        android:id="@+id/custom_bar"
-        layout="@layout/custom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="20dp"
-        />
-
     <TextView
         android:id="@+id/orderTitle"
         android:layout_width="match_parent"
@@ -51,9 +43,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
+        android:hint="@string/ho"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:text="@string/ho" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/firstNameInputCheckout"
@@ -65,9 +57,9 @@
         android:layout_marginBottom="5dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/ten"
         android:inputType="text"
         android:minHeight="48dp"
-        android:text="@string/ten"
         tools:ignore="LabelFor" />
 
     <EditText
@@ -79,9 +71,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:text="Email" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/phoneInputCheckout"
@@ -92,9 +84,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
+        android:hint="Số điện thoại"
         android:inputType="phone"
-        android:minHeight="48dp"
-        android:text="Số điện thoại" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/addressInputCheckout"
@@ -105,9 +97,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
+        android:hint="Địa chỉ"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:text="Địa chỉ" />
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/checkoutButton"

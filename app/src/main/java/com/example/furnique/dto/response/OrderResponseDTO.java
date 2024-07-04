@@ -7,14 +7,14 @@ public class OrderResponseDTO {
         private String accountName;
         private double amount;
         private String description;
-        private int orderCode;
+        private String orderCode;
         private String currency;
         private String paymentLinkId;
         private String status;
         private String checkoutUrl;
         private String qrCode;
 
-        public CreateOrderDTO(String bin, String accountNumber, String accountName, double amount, String description, int orderCode, String currency, String paymentLinkId, String status, String checkoutUrl, String qrCode) {
+        public CreateOrderDTO(String bin, String accountNumber, String accountName, double amount, String description, String orderCode, String currency, String paymentLinkId, String status, String checkoutUrl, String qrCode) {
             this.bin = bin;
             this.accountNumber = accountNumber;
             this.accountName = accountName;
@@ -68,11 +68,11 @@ public class OrderResponseDTO {
             this.description = description;
         }
 
-        public int getOrderCode() {
+        public String getOrderCode() {
             return orderCode;
         }
 
-        public void setOrderCode(int orderCode) {
+        public void setOrderCode(String orderCode) {
             this.orderCode = orderCode;
         }
 

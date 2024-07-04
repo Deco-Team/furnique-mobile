@@ -11,6 +11,6 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface OrderAPI {
-    @POST("/orders")
-    Call<DataResponseDTO<OrderResponseDTO.CreateOrderDTO>> createOrder(@Header("Authorization") String authorization, @Body() OrderRequestDTO.CreateOrderDTO createOrderDto);
+    @POST("/orders/customer")
+    Call<DataResponseDTO<OrderResponseDTO.CreateOrderDTO>> createOrder(@Header("Authorization") String authorization, @Body OrderRequestDTO.CreateOrderDTO createOrderDto);
 }
