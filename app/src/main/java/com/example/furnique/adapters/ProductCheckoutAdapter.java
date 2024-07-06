@@ -37,6 +37,7 @@ public class ProductCheckoutAdapter extends RecyclerView.Adapter<ProductCheckout
         TextView txtProductNameCart;
         TextView txtSkuCart;
         TextView txtProductPriceCart;
+        TextView quantityCheckout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -44,6 +45,7 @@ public class ProductCheckoutAdapter extends RecyclerView.Adapter<ProductCheckout
             txtProductNameCart = itemView.findViewById(R.id.txtProductNameCart);
             txtSkuCart = itemView.findViewById(R.id.txtSkuCart);
             txtProductPriceCart = itemView.findViewById(R.id.txtProductPriceCart);
+            quantityCheckout = itemView.findViewById(R.id.quantityCheckout);
         }
     }
 
@@ -63,8 +65,9 @@ public class ProductCheckoutAdapter extends RecyclerView.Adapter<ProductCheckout
 
         CartResponseDTO.ItemDto itemDto = cartItemList.get(position);
         holder.txtProductNameCart.setText(itemDto.getProduct().getName());
-        holder.txtSkuCart.setText(itemDto.getSku());
+        holder.txtSkuCart.setText("SKU: " + itemDto.getSku());
         holder.txtProductPriceCart.setText(CurrencyFormatUtil.formatAsVietnamDong(itemDto.getProduct().getFirstVariantPrice()));
+        holder.quantityCheckout.setText("Số lượng: " + itemDto.getQuantity());
     }
 
     @Override

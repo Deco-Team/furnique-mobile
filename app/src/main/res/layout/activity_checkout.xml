@@ -8,136 +8,147 @@
     android:orientation="vertical"
     tools:context=".activities.CheckoutActivity">
 
-    <TextView
-        android:id="@+id/orderTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/donhangcuaban"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCartItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/orderTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/donhangcuaban"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="Thành tiền"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCartItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" >
 
-    <TextView
-        android:id="@+id/priceHolder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="tonggiatien"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/customerInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="Thông tin khách hàng"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Thành tiền"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/lastNameInputCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="@string/ho"
-        android:inputType="text"
-        android:minHeight="48dp" />
+            <TextView
+                android:id="@+id/priceHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="tonggiatien"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/firstNameInputCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/ten"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="LabelFor" />
+            <TextView
+                android:id="@+id/customerInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Thông tin khách hàng"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/emailIntputCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+            <EditText
+                android:id="@+id/lastNameInputCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="@string/ho"
+                android:inputType="text"
+                android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/phoneInputCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="Số điện thoại"
-        android:inputType="phone"
-        android:minHeight="48dp" />
+            <EditText
+                android:id="@+id/firstNameInputCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/ten"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="LabelFor" />
 
-    <EditText
-        android:id="@+id/addressInputCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="Địa chỉ"
-        android:inputType="text"
-        android:minHeight="48dp" />
+            <EditText
+                android:id="@+id/emailIntputCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/checkoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="8dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/primary_button"
-        android:gravity="center"
-        android:minHeight="48dp"
-        android:text="Thanh toán"
-        android:textColor="#E3964A"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null" />
+            <EditText
+                android:id="@+id/phoneInputCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Số điện thoại"
+                android:inputType="phone"
+                android:minHeight="48dp" />
 
+            <EditText
+                android:id="@+id/addressInputCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Địa chỉ"
+                android:inputType="text"
+                android:minHeight="48dp" />
+
+            <Button
+                android:id="@+id/checkoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/primary_button"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Thanh toán"
+                android:textColor="#E3964A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

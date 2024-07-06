@@ -27,6 +27,7 @@ import com.example.furnique.dto.response.DataResponseDTO;
 import com.example.furnique.dto.response.OrderResponseDTO;
 import com.example.furnique.models.CartModel;
 import com.example.furnique.models.CheckoutModel;
+import com.example.furnique.utils.CurrencyFormatUtil;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -60,6 +61,7 @@ public class CheckoutActivity extends AppCompatActivity {
             public void onGetCartSuccess(CartResponseDTO.CartDTO cartDTO) {
                 cartItems = cartDTO.getItems();
                 productCheckoutAdapter.addCartItems(cartItems);
+                binding.priceHolder.setText(CurrencyFormatUtil.formatAsVietnamDong(cartDTO.getTotalAmount()));
             }
 
             @Override
@@ -85,17 +87,32 @@ public class CheckoutActivity extends AppCompatActivity {
             if (lastName.isEmpty()) {
                 binding.lastNameInputCheckout.setError("Vui lòng nhập họ");
             }
+            if (lastName.length() > 30) {
+                binding.lastNameInputCheckout.setError("Họ phải ít hơn hoặc bằng 30 chữ cái");
+            }
             if (firstName.isEmpty()) {
                 binding.firstNameInputCheckout.setError("Vui lòng nhập tên");
+            }
+            if (firstName.length() > 30) {
+                binding.firstNameInputCheckout.setError("Tên phải ít hơn hoặc bằng 30 chữ cái");
             }
             if (email.isEmpty()) {
                 binding.emailIntputCheckout.setError("Vui lòng nhập email");
             }
+            if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                binding.emailIntputCheckout.setError("Email không hợp lệ");
+            }
             if (phone.isEmpty()) {
                 binding.phoneInputCheckout.setError("Vui lòng nhập số điện thoại");
             }
+            if (!phone.matches("^(\\d{3}[- .]?){2}\\d{4}$")) {
+                binding.phoneInputCheckout.setError("Số điện thoại không hợp lệ");
+            }
             if (address.isEmpty()) {
                 binding.addressInputCheckout.setError("Vui lòng nhập địa chỉ");
+            }
+            if (address.length() > 500) {
+                binding.addressInputCheckout.setError("Địa chỉ phải ít hơn hoặc bằng 500 chữ cái");
             }
 
             CheckoutModel checkoutModel = new CheckoutModel();
