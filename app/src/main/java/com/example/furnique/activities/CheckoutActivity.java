@@ -1,11 +1,13 @@
 package com.example.furnique.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import com.example.furnique.models.CartModel;
 import com.example.furnique.models.CheckoutModel;
 import com.google.gson.Gson;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,11 +105,27 @@ public class CheckoutActivity extends AppCompatActivity {
             checkoutModel.createOrder(accessToken,
                     new OrderRequestDTO.CreateOrderDTO(
                             orderCustomer,
-                            orderItems, "PAY_OS", ""),
+                            orderItems, "MOMO", ""),
                     new CheckoutModel.CreateOrderCallback() {
                         @Override
                         public void onSuccess(DataResponseDTO<OrderResponseDTO.CreateOrderDTO> responseDTO) {
-                            Log.d(CheckoutActivity.class.getName(), new Gson().toJson(responseDTO));
+                            Log.d("CheckoutActivity", new Gson().toJson(responseDTO));
+                            try {
+                                String deeplink = java.net.URLDecoder.decode(responseDTO.getData().getDeeplink(), "UTF-8");
+                                Uri uri = Uri.parse(deeplink);
+                                Log.d("CheckoutActivity", uri.toString());
+                                Intent paymentIntent = new Intent(Intent.ACTION_VIEW, uri);
+
+                                PackageManager packageManager = getPackageManager();
+                                List<ResolveInfo> activities =
+                                        packageManager.queryIntentActivities(paymentIntent, 0);
+                                boolean isIntentSafe = activities.size() > 0;
+                                Log.d("CheckoutActivity", "isIntentSafe: " + isIntentSafe);
+
+                                startActivity(paymentIntent);
+                            } catch (UnsupportedEncodingException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
 
                         @Override

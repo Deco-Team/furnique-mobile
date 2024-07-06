@@ -36,6 +36,7 @@ public class CheckoutModel {
         orderAPI.createOrder("Bearer " + accessToken, createOrderDTO).enqueue(new Callback<DataResponseDTO<OrderResponseDTO.CreateOrderDTO>>() {
             @Override
             public void onResponse(Call<DataResponseDTO<OrderResponseDTO.CreateOrderDTO>> call, Response<DataResponseDTO<OrderResponseDTO.CreateOrderDTO>> response) {
+                Log.d(CheckoutModel.class.getName(), new Gson().toJson(response.body()));
                 if (response.isSuccessful()) {
                     createOrderCallback.onSuccess(response.body());
                 } else {

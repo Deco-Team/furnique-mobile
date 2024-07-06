@@ -59,8 +59,10 @@ public class CartModel {
             public void onResponse(Call<CartResponseDTO> call, Response<CartResponseDTO> response) {
                 Log.d("getCart.onResponse: ", String.valueOf(response.code()));
                 Log.d("getCart.onResponse: ", new Gson().toJson(response.body()));
-                CartResponseDTO cartResponseDTO = new CartResponseDTO(response.body().getData());
-                onCartResponseListener.onGetCartSuccess(cartResponseDTO.getData());
+                if(response.code() == 200) {
+                    CartResponseDTO cartResponseDTO = new CartResponseDTO(response.body().getData());
+                    onCartResponseListener.onGetCartSuccess(cartResponseDTO.getData());
+                }
             }
 
             @Override
