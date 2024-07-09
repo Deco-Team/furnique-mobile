@@ -3,6 +3,7 @@ package com.example.furnique.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+        Intent activityIntent = getIntent();
+        Uri data = activityIntent.getData();
+        if(data!= null) {
+            Log.d(MainActivity.class.getName(), "activityIntent getPath: " + data.getPath());
+            Log.d(MainActivity.class.getName(), "activityIntent getQuery: " + data.getQuery());
+        }
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.FURNIQUE_PREF, Context.MODE_PRIVATE);
         String accessToken = pref.getString("accessToken", null);

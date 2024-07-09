@@ -1,6 +1,7 @@
 package com.example.furnique.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.furnique.R;
+import com.example.furnique.activities.CheckoutActivity;
 import com.example.furnique.adapters.CartCardAdapter;
 import com.example.furnique.contracts.Constants;
 import com.example.furnique.dto.request.CartRequestDTO;
@@ -93,8 +95,11 @@ public class CartFragment extends Fragment {
                     if (!cartDTO.getItems().isEmpty()) {
                         layout_empty_cart.setVisibility(View.INVISIBLE);
                         cartCardAdapter.addCartItems(cartDTO.getItems());
+                        view.findViewById(R.id.btnCheckOut).setEnabled(true);
+
                     } else {
                         layout_empty_cart.setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.btnCheckOut).setEnabled(false);
                     }
                 }
 
@@ -103,6 +108,11 @@ public class CartFragment extends Fragment {
                     Log.d("CartFragment.reUpdateView:... ", "");
                     cartModel.getCart(accessToken);
                 }
+            });
+
+            view.findViewById(R.id.btnCheckOut).setOnClickListener(v -> {
+                Intent intent = new Intent(getContext(), CheckoutActivity.class);
+                startActivity(intent);
             });
         }
         return view;
