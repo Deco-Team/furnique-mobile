@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90355388232",
+    "project_id": "furnique-1b1c7",
+    "storage_bucket": "furnique-1b1c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90355388232:android:51b5760b87099a09742d7d",
+        "android_client_info": {
+          "package_name": "com.example.furnique"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFuEAQi5RR0wa3NWGlj_lhZGHCuO8M6MU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
